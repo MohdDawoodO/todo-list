@@ -23,12 +23,18 @@ const Form = () => {
         <div className="fill-form">
           <input
             value={text}
+            maxLength={50}
             onChange={(e) => setText(e.target.value)}
             type="text"
             required
           />
           <button type="submit">
-            <Icon icon="basil:add-solid" width="1.75rem" height="1.75rem" />
+            <Icon
+              icon="basil:add-solid"
+              width="2.2rem"
+              height="2.2rem"
+              style={{ color: "white" }}
+            />
           </button>
         </div>
       </form>

@@ -1,10 +1,16 @@
 import GetLocal from "./GetLocal";
 
-const RemoveItem = (id: string, todos: any, setTodos: any) => {
+const RemoveItem = (e: any, id: string, todos: any, setTodos: Function) => {
   const newItems = todos.filter((todo: any) => todo.id !== id);
+  const btns = e.target.parentElement;
+  const item = btns.parentElement;
 
-  localStorage.setItem("todos", JSON.stringify(newItems));
-  GetLocal(setTodos);
+  item.classList.add("removed");
+  item.addEventListener("transitionend", (e: any) => {
+    console.log(e);
+    localStorage.setItem("todos", JSON.stringify(newItems));
+    GetLocal(setTodos);
+  });
 };
 
 export default RemoveItem;

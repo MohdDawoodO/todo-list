@@ -7,18 +7,20 @@ import CheckItem from "./CheckItem";
 const List = () => {
   const [todos] = useAtom(items);
 
-  if (!todos.length) return;
   return (
     <div className="list">
-      {todos.map((todo: any) => (
-        <Item
-          todo={todo}
-          key={todo.id}
-          id={todo.id}
-          text={todo.item}
-          checked={todo.checked}
-        />
-      ))}
+      <div className="items">
+        {todos.map((todo: any) => (
+          <Item
+            todo={todo}
+            key={todo.id}
+            id={todo.id}
+            text={todo.item}
+            checked={todo.checked}
+          />
+        ))}
+      </div>
+      {!todos.length && <h2 className="hint">Add an item...</h2>}
     </div>
   );
 };
@@ -30,19 +32,28 @@ const Item = ({ text, checked, id, todo }: any) => {
     <div className={`item ${checked ? "checked" : ""}`}>
       <h2>{text}</h2>
 
-      <button
-        className="completeBtn"
-        onClick={(e) => CheckItem(e, todo, todos)}
-      >
-        <Icon icon="mdi:tick" width="28" height="28" />
-      </button>
+      <div className="btns">
+        <button className="checkBtn" onClick={(e) => CheckItem(e, todo, todos)}>
+          <Icon
+            icon="mdi:tick"
+            width="2rem"
+            height="2rem"
+            style={{ color: "white" }}
+          />
+        </button>
 
-      <button
-        className="deleteBtn"
-        onClick={() => RemoveItem(id, todos, setTodos)}
-      >
-        <Icon icon="mynaui:trash-solid" width="28" height="28" />
-      </button>
+        <button
+          className="deleteBtn"
+          onClick={(e) => RemoveItem(e, id, todos, setTodos)}
+        >
+          <Icon
+            icon="mynaui:trash-solid"
+            width="1.8rem"
+            height="1.8rem"
+            style={{ color: "white" }}
+          />
+        </button>
+      </div>
     </div>
   );
 };

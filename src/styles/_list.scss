@@ -1,0 +1,76 @@
+.list {
+  display: flex;
+  min-width: 38rem;
+  max-width: 45rem;
+  min-height: 35vh;
+  max-height: 65vh;
+  background-color: #1f1f1f;
+  border: 5px solid rgb(34, 34, 34);
+  border-radius: 1rem;
+  padding: 4rem 3rem;
+  position: relative;
+}
+
+.items {
+  overflow: hidden;
+  overflow-y: scroll;
+  width: 100%;
+  padding: 0rem 1rem;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(7, 7, 7, 0.418);
+    border-radius: 1rem;
+  }
+}
+
+.item:first-child {
+  margin-top: 0rem;
+}
+.item:last-child {
+  margin-bottom: 0rem;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  background: #d9d9d9;
+  margin: 1rem 0rem;
+  transition: all 0.5s ease;
+  h2 {
+    padding: 0.5rem;
+  }
+  .btns {
+    display: flex;
+    button {
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
+  }
+}
+
+.checkBtn {
+  background: #00e099;
+}
+.deleteBtn {
+  background: #e03c00;
+}
+
+.item.checked {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+.item.removed {
+  transform: translateX(110%);
+}
+
+.hint {
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

@@ -1,0 +1,28 @@
+.form {
+  min-height: 30vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .fill-form {
+    display: flex;
+    justify-content: center;
+    padding-top: 2rem;
+
+    input,
+    button {
+      border: none;
+      padding: 0.35rem 1rem;
+      font-size: 1.5rem;
+    }
+    button {
+      background: #00d491;
+      border-radius: 0rem 0.75rem 0.75rem 0rem;
+    }
+    input {
+      width: 25rem;
+      border-radius: 0.75rem 0rem 0rem 0.75rem;
+    }
+  }
+}

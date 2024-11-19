@@ -1,14 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 body {
   background: #252525;
+  font-family: "Inter", sans-serif;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
 }
+
+input,
+button {
+  font-family: "Inter", sans-serif;
+}
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 2.4rem;
+  color: white;
+  font-weight: 500;
+}
+
+h2 {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+}
+
+span {
+  color: #00e099;
+  font-weight: 800;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+}
+
 svg {
   pointer-events: none;
 }
 
-.checked {
-  text-decoration: line-through;
-}
-
-.list {
-  color: white;
-}
+@import "./form";
+@import "./list";
