@@ -1,3 +1,14 @@
 body {
   background: #252525;
 }
+svg {
+  pointer-events: none;
+}
+
+.checked {
+  text-decoration: line-through;
+}
+
+.list {
+  color: white;
+}

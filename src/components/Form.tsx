@@ -1,16 +1,16 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { items } from "./states";
-import { useAtom } from "jotai";
+import { useSetAtom } from "jotai";
 import AddItem from "./AddItem";
 import { useState } from "react";
 
 const Form = () => {
-  const [todos, setTodos] = useAtom(items);
+  const setTodos = useSetAtom(items);
   const [text, setText] = useState("");
 
   const addTodo = (e: any) => {
     e.preventDefault();
-    AddItem(text, todos, setTodos);
+    AddItem(text, setTodos);
     setText("");
   };
 
