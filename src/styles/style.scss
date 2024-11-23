@@ -52,3 +52,27 @@ svg {
 
 @import "./form";
 @import "./list";
+
+@media screen and (max-width: 1500px) {
+  html {
+    font-size: 90%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  html {
+    font-size: 80%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 70%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  html {
+    font-size: 60%;
+  }
+}

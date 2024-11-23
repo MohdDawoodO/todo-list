@@ -26,3 +26,14 @@
     }
   }
 }
+
+@media screen and (max-width: 425px) {
+  .form {
+    .fill-form {
+      input,
+      button {
+        font-size: 1.3rem;
+      }
+    }
+  }
+}
