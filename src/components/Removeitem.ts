@@ -6,7 +6,7 @@ const RemoveItem = (e: any, id: string, todos: any, setTodos: Function) => {
   const item = btns.parentElement;
 
   item.classList.add("removed");
-  item.addEventListener("transitionend", (e: any) => {
+  item.addEventListener("transitionend", () => {
     localStorage.setItem("todos", JSON.stringify(newItems));
     GetLocal(setTodos);
   });

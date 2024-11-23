@@ -3,11 +3,11 @@ import Form from "./components/Form";
 import List from "./components/List";
 import { useEffect } from "react";
 import GetLocal from "./components/GetLocal";
-import { useAtom } from "jotai";
+import { useSetAtom } from "jotai";
 import { items } from "./components/states";
 
 function App() {
-  const [todos, setTodos] = useAtom(items);
+  const setTodos = useSetAtom(items);
 
   useEffect(() => {
     GetLocal(setTodos);
