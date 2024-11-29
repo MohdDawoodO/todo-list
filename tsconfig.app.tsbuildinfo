@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/components/additem.ts","./src/components/checkitem.ts","./src/components/form.tsx","./src/components/getlocal.ts","./src/components/list.tsx","./src/components/removeitem.ts","./src/components/states.ts"],"version":"5.6.3"}
