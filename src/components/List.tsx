@@ -3,6 +3,7 @@ import { items } from "./states";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import RemoveItem from "./Removeitem";
 import CheckItem from "./CheckItem";
+import { motion, AnimatePresence, animate, delay } from "framer-motion";
 
 const List = () => {
   const [todos] = useAtom(items);
@@ -10,15 +11,17 @@ const List = () => {
   return (
     <div className="list">
       <div className="items">
-        {todos.map((todo: any) => (
-          <Item
-            todo={todo}
-            key={todo.id}
-            id={todo.id}
-            text={todo.item}
-            checked={todo.checked}
-          />
-        ))}
+        <AnimatePresence>
+          {todos.map((todo: any) => (
+            <Item
+              todo={todo}
+              key={todo.id}
+              id={todo.id}
+              text={todo.item}
+              checked={todo.checked}
+            />
+          ))}
+        </AnimatePresence>
       </div>
       {!todos.length && <h2 className="hint">Add an item...</h2>}
     </div>
@@ -29,7 +32,13 @@ const Item = ({ text, checked, id, todo }: any) => {
   const [todos, setTodos] = useAtom(items);
 
   return (
-    <div className={`item ${checked ? "checked" : ""}`}>
+    <motion.div
+      variants={listAnim}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      className={`item ${checked ? "checked" : ""}`}
+    >
       <h2>{text}</h2>
 
       <div className="btns">
@@ -44,7 +53,7 @@ const Item = ({ text, checked, id, todo }: any) => {
 
         <button
           className="deleteBtn"
-          onClick={(e) => RemoveItem(e, id, todos, setTodos)}
+          onClick={() => RemoveItem(id, todos, setTodos)}
         >
           <Icon
             icon="mynaui:trash-solid"
@@ -54,8 +63,17 @@ const Item = ({ text, checked, id, todo }: any) => {
           />
         </button>
       </div>
-    </div>
+    </motion.div>
   );
+};
+
+const listAnim = {
+  initial: { x: "-150%" },
+  animate: { x: "0%", transition: { duration: 0.2, type: "tween" } },
+  exit: {
+    x: "1000%",
+    transition: { duration: 0.5, type: "tween", ease: "easeOut" },
+  },
 };
 
 export default List;
