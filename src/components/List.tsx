@@ -4,6 +4,7 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import RemoveItem from "./Removeitem";
 import CheckItem from "./CheckItem";
 import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 
 const List = () => {
   const [todos] = useAtom(items);
@@ -30,6 +31,15 @@ const List = () => {
 
 const Item = ({ text, checked, id, todo }: any) => {
   const [todos, setTodos] = useAtom(items);
+  const [check, setCheck] = useState(checked);
+
+  const lineStyle: any = {
+    position: "absolute",
+    top: "50%",
+    left: "0%",
+    height: "3px",
+    background: "black",
+  };
 
   return (
     <motion.div
@@ -37,12 +47,29 @@ const Item = ({ text, checked, id, todo }: any) => {
       initial="initial"
       animate="animate"
       exit="exit"
-      className={`item ${checked ? "checked" : ""}`}
+      className={`item`}
+      style={{ opacity: check ? 0.6 : 1 }}
     >
-      <h2>{text}</h2>
+      <h2>
+        <AnimatePresence>
+          {check && (
+            <motion.div
+              style={lineStyle}
+              initial={lineAnim.initial}
+              animate={lineAnim.animate}
+              exit={lineAnim.exit}
+              className="line"
+            ></motion.div>
+          )}
+        </AnimatePresence>
+        {text}
+      </h2>
 
       <div className="btns">
-        <button className="checkBtn" onClick={(e) => CheckItem(e, todo, todos)}>
+        <button
+          className="checkBtn"
+          onClick={() => CheckItem(setCheck, todo, todos)}
+        >
           <Icon
             icon="mdi:tick"
             width="2rem"
@@ -73,6 +100,18 @@ const listAnim = {
   exit: {
     x: "1000%",
     transition: { duration: 0.5, type: "tween", ease: "easeOut" },
+  },
+};
+
+const lineAnim = {
+  initial: { width: "0%" },
+  animate: {
+    width: "100%",
+    transition: { duration: 0.4, type: "tween", ease: "easeIn" },
+  },
+  exit: {
+    width: "0%",
+    transition: { duration: 0.3, type: "tween", ease: "easeOut" },
   },
 };
 

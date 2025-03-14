@@ -1,7 +1,5 @@
-const CheckItem = (e: any, todo: any, todos: any) => {
-  const btns = e.target.parentElement;
-  btns.parentElement.classList.toggle("checked");
-
+const CheckItem = (setCheck: any, todo: any, todos: any) => {
+  setCheck(!todo.checked);
   todo.checked = !todo.checked;
   localStorage.setItem("todos", JSON.stringify(todos));
 };
