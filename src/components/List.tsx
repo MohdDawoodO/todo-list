@@ -3,7 +3,7 @@ import { items } from "./states";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import RemoveItem from "./Removeitem";
 import CheckItem from "./CheckItem";
-import { motion, AnimatePresence, animate, delay } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const List = () => {
   const [todos] = useAtom(items);
