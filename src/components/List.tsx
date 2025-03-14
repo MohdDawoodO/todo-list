@@ -4,7 +4,7 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import RemoveItem from "./Removeitem";
 import CheckItem from "./CheckItem";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const List = () => {
   const [todos] = useAtom(items);
@@ -33,11 +33,23 @@ const Item = ({ text, checked, id, todo }: any) => {
   const [todos, setTodos] = useAtom(items);
   const [check, setCheck] = useState(checked);
 
+  const [smallScreen, setSmallScreen]: any = useState(false);
+
+  useEffect(() => {
+    function screenCheck() {
+      setSmallScreen(screen.width < 1000);
+    }
+
+    screenCheck();
+
+    window.addEventListener("resize", screenCheck);
+  }, []);
+
   const lineStyle: any = {
     position: "absolute",
     top: "50%",
     left: "0%",
-    height: "3px",
+    height: smallScreen ? "2px" : "3px",
     background: "black",
   };
 
