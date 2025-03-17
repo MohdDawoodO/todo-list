@@ -14,6 +14,15 @@ const Form = () => {
     setText("");
   };
 
+  const changeInputValue = (e: any) => {
+    const inputValue = e.target.value;
+    const checkSpace = inputValue.includes(" ") || inputValue.length <= 22;
+
+    if (checkSpace) setText(inputValue);
+
+    if (/(.)\1{5,}/.test(inputValue)) return;
+  };
+
   return (
     <div className="form">
       <h1>
@@ -23,8 +32,8 @@ const Form = () => {
         <div className="fill-form">
           <input
             value={text}
-            maxLength={50}
-            onChange={(e) => setText(e.target.value)}
+            maxLength={40}
+            onChange={(e) => changeInputValue(e)}
             type="text"
             required
           />

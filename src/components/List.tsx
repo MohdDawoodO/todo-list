@@ -34,16 +34,17 @@ const Item = ({ text, checked, id, todo }: any) => {
   const [check, setCheck] = useState(checked);
 
   const [smallScreen, setSmallScreen]: any = useState(false);
+  const [mobileScreen, setMobileScreen]: any = useState(false);
 
   useEffect(() => {
-    function screenCheck() {
-      setSmallScreen(screen.width < 1000);
-    }
-
     screenCheck();
-
     window.addEventListener("resize", screenCheck);
   }, []);
+
+  function screenCheck() {
+    setSmallScreen(screen.width < 1000);
+    setMobileScreen(screen.width < 500);
+  }
 
   const lineStyle: any = {
     position: "absolute",
@@ -59,12 +60,12 @@ const Item = ({ text, checked, id, todo }: any) => {
       initial="initial"
       animate="animate"
       exit="exit"
-      className={`item`}
+      className={`item ${mobileScreen && check ? "checked" : ""}`}
       style={{ opacity: check ? 0.6 : 1 }}
     >
       <h2>
         <AnimatePresence>
-          {check && (
+          {check && !mobileScreen && (
             <motion.div
               style={lineStyle}
               initial={lineAnim.initial}
