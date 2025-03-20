@@ -15,17 +15,20 @@ const List = () => {
             variants={staggerAnim}
             initial="initial"
             animate="animate"
+            exit={staggerAnim.exit}
             className="items"
           >
-            {todos.map((todo: any) => (
-              <Item
-                todo={todo}
-                key={todo.id}
-                id={todo.id}
-                text={todo.item}
-                checked={todo.checked}
-              />
-            ))}
+            <AnimatePresence>
+              {todos.map((todo: any) => (
+                <Item
+                  todo={todo}
+                  key={todo.id}
+                  id={todo.id}
+                  text={todo.item}
+                  checked={todo.checked}
+                />
+              ))}
+            </AnimatePresence>
           </motion.div>
         )}
       </AnimatePresence>

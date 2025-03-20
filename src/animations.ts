@@ -29,4 +29,5 @@ export const staggerAnim = {
       when: "beforeChildren",
     },
   },
+  exit: { opacity: 0.99 },
 };
